@@ -1,6 +1,5 @@
 //Libreria per la somma di due vettori
 
-
 #include<iostream>
 #include "lib.h"
 
