@@ -27,3 +27,12 @@ void stampa(const int a[], const int n){
 }
 
 //concatenazione vettore
+void concatenazione( const int a[], const int b[], int c[], const int n){
+    int i;
+
+    printf("vettore concatenato");
+
+	for (i=0;i<n;i++) 
+		c[i]=a[i];
+		c[n+i]=b[i];
+}
