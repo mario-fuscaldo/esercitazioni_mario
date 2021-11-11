@@ -1,9 +1,9 @@
 #ifndef PROCESSI_H_
 #define PROCESSI_H_
 
-#define MUTEX 0
-#define SEMC 1
-#define SEMV 2
+#define MUTEX 0	//mutua esclusione clienti	(non farli andare sulla stessa cosa)
+#define SEMC 1	//cooperazione clienti		(solo uno modifica vettore di stato)
+#define SEMV 2	//cooperazione visualizzatore-clienti
 
 #define PATH "./"
 #define CHAR 'a'
