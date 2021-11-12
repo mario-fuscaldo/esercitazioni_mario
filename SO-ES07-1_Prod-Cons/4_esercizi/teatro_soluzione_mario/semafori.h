@@ -5,8 +5,8 @@
 #include <sys/sem.h>
 #include <sys/ipc.h>
 
-int vado(int id_sem, int numsem);
-int vai(int id_sem, int numsem);
+int Wait_Sem(int id_sem, int numsem);
+int Signal_Sem(int id_sem, int numsem);
 
 
 

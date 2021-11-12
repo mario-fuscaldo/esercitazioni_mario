@@ -12,13 +12,15 @@
 #include "procedure.h"
 
 
-void visualizzazione(posto p [DIM]){
+void visualizzatore(posto* p, int sem_id){
 
     while(1){
 
         sleep(1);
 
-		for(int i=0; i<DIM; i++){
+		Signal_Sem(sem_id, MUTEX);
+
+		for(int i=0; i<MAX_POSTI; i++){
 
 		printf("N.ro POSTO: %d ;", i);
 
@@ -28,15 +30,17 @@ void visualizzazione(posto p [DIM]){
 
 		}else if(p[i].stato == OCCUPATO){
 			printf("STATO: %s\n", "OCCUPATO");
-			printf("OCCUPATO DA: %d\n", p[i].id_cliente);
+			printf(" DA: %d\n", p[i].id_cliente);
 
 		}else
 			printf("STATO: %s\n", "IN AGGIORNAMENTO");
 		}
+
+		Wait_Sem(sem_id, MUTEX);
     }	
 }
 
-void presaDelPosto(posto p [DIM],  int id_sem){
+void cliente(posto* p, int sem_id, int* posti_disp){
     
     //tempo di attesa(0-5s);
 	int s;
@@ -49,45 +53,34 @@ void presaDelPosto(posto p [DIM],  int id_sem){
 	srand(time(NULL));
 	num_posti = rand () %4 +1;
 	
-	//serve un modo per trovare la disponibilità 
-	//così è una barabrie ma non ho altri metodi
-    int disp = DIM;
-	for(int i=0; i<DIM; i++){
-		if (p[i].stato!=LIBERO)
-			disp--;
 
-	}
-	
-	if(disp >= num_posti){
-	//entra nella sezione critica
-	vado(id_sem, ENTRO_IO);
-		disp -= num_posti;
+	//controllo posti disponibili e decremento
 
-		
-		printf("N.ro dei posti disponibili attualmente: %d\n",disp);
+	if(*posti_disp >= num_posti){
+		Wait_Sem(sem_id, SEM_NUM_POSTI);
 
+		*posti_disp -= num_posti;
+
+		Signal_Sem(sem_id, SEM_NUM_POSTI);
+
+
+	//accesso a sezione critica
+		Wait_Sem(sem_id, MUTEX);
 		int i=0;
 		while(num_posti != 0){
-		
+
 			if(p[i].stato == LIBERO){
-			
 				p[i].stato = IN_AGGIORNAMENTO;
-
 				sleep(1);
-
-				printf("Il cliente %d, ha occupato il posto: %d\n", getpid(), i);
-
+				//printf("Il cliente %d, ha occupato il posto: %d\n", getpid(), i);
 				p[i].stato = OCCUPATO;
-
 				p[i].id_cliente = getpid();
-
 				num_posti --;
 			}else
 				i++;
 		}
 	}else
 		printf("NON ABBASTANZA POSTI DISPONIBI\n");
-		
 
-	vai(id_sem, ENTRO_IO);
+		Signal_Sem(sem_id, MUTEX);
 }
