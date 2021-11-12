@@ -26,11 +26,10 @@ void visualizzatore(posto* p, int sem_id){
 
 		if(p[i].stato == LIBERO){
 
-			printf("STATO: %s\n", "LIBERO");
+			printf("STATO: LIBERO\n");
 
 		}else if(p[i].stato == OCCUPATO){
-			printf("STATO: %s\n", "OCCUPATO");
-			printf(" DA: %d\n", p[i].id_cliente);
+			printf("STATO: OCCUPATO DA: %d\n", p[i].id_cliente);			
 
 		}else
 			printf("STATO: %s\n", "IN AGGIORNAMENTO");
