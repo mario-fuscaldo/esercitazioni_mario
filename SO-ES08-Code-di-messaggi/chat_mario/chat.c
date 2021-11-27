@@ -20,7 +20,7 @@ int main(int argc, char *argv[]) {
 		_exit(1);
 	}
 
-	char firstChar = *argv[1];
+	char firstChar = *argv[1];	//serve a predndere le cose da terminale quando esegui il main
 	char secondChar = *argv[2];
 
 	printf("I caratteri inseriti sono: %c %c\n", firstChar, secondChar);
