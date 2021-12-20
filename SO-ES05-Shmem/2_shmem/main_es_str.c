@@ -9,7 +9,7 @@
 
 int main(){
 
-       	key_t shm_key = ftok(".", 'k');
+    key_t shm_key = ftok(".", 'k');
 	int ds_shm = shmget(shm_key, 100, IPC_CREAT | IPC_EXCL | 0664);
 	char * p;
 

@@ -8,7 +8,7 @@
 
 int main(){
 
-        key_t shm_key = IPC_PRIVATE;
+    key_t shm_key = IPC_PRIVATE;
  	int ds_shm = shmget(shm_key, sizeof(int),IPC_CREAT|0664);
  	
  	if(ds_shm < 0) { 
