@@ -2,10 +2,10 @@
 #define _HEADER_H_
 
 #define NUM_VOLTE 3
-#define SYNCH 0
-#define MUTEXS 1
-#define MUTEXL 2
-#define MUTEX  3
+#define SYNCH 0		//per avvisare lett e scrittori
+#define MUTEXS 1	//per prendere il buffer
+#define MUTEXL 2	//per prendere il buffer
+#define MUTEX  3	//per non scrivere tutti assieme
 
 /*
 sem per variabili conteggio lett	MUTEXL

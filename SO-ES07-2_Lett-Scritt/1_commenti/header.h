@@ -1,7 +1,7 @@
 		/*-------HEADER FILE-------------*/
 
-#define MUTEXL 0
-#define SYNCH 1
+#define MUTEXL 0        //serve a non far umentare il numero di lettori a caso
+#define SYNCH 1         //cooperazione
 #define NUM_VOLTE 6
 
 

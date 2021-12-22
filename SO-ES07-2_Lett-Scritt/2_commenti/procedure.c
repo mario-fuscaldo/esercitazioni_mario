@@ -50,12 +50,21 @@ void InizioScrittura(int sem, Buffer* buf){
             Wait_Sem(sem, SYNCH);
 
         Signal_Sem(sem,MUTEXS); //Rilascia il mutex per far entrare altri scrittori per potersi mettere in attesa
+        
+        
+        //------------------------------
         Wait_Sem(sem,MUTEX); //Blocco eventuali scrittori per la scrittura vera e propria
+        //-------------------------------
+
 }
 
 void FineScrittura(int sem, Buffer* buf){
 
+        //--------------------------------
         Signal_Sem(sem,MUTEX); //Rilascio il mutex per gli scrittori che devono scrivere
+        //--------------------------------
+        
+        
         Wait_Sem(sem,MUTEXS); //Indica agli scrittori che sto terminando la scrittura, decremento
                                 // numscrittori in mutua esclusione
         buf->numscrittori = buf->numscrittori - 1;

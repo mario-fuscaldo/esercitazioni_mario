@@ -5,6 +5,7 @@
 
 #define DIM 5
 
+//aiuto a capire lo stato non sono semafori
 #define LIBERO 0
 #define OCCUPATO 1
 #define IN_USO 2

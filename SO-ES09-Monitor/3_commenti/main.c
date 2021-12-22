@@ -10,6 +10,8 @@
 #include "procedure.h"
 
 
+//dice pool di buffer ma è vettore di stato
+
 int main() {
 
 	key_t chiave_shm = IPC_PRIVATE;

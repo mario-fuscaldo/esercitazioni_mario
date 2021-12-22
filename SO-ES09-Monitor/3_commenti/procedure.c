@@ -28,6 +28,7 @@ void Produci(struct ProdCons * pc, int valore) {	//senza asterisco sarebbe la va
 	pc->stato[i] = IN_USO;
 	pc->numero_liberi--;
 
+	//ESCI DAL MONITOR DOPO AVER MESSO IL VETTORE A IN_USO
 	leave_monitor( &(pc->m) );
 
 	//CONSUMAZIONE E PRODUZIONE FUORI DAL MONITOR

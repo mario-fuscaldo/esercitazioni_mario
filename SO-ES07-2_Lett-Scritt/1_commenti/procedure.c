@@ -15,7 +15,8 @@
 
 void InizioLettura(int sem, Buffer* buf){
     
-    Wait_Sem(sem, MUTEXL); //Indica ai lettori che sto iniziando a leggere, incremento [serve a proteggere numlettori da race condition]
+    Wait_Sem(sem, MUTEXL);  //Indica ai lettori che sto iniziando a leggere, incremento 
+                            //[serve a proteggere numlettori da race condition]
     // numlettori in mutua esclusione
     buf->numlettori = buf->numlettori + 1;
     
